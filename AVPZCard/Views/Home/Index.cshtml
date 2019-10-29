@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Post>
+
+@{
+
+}
+<h2>This is an index page</h2>
+<img src="~/content/static/bruh.jpg" width="900px" height="400px" />
+<div>
+    <ul>
+        @foreach (var post in Model)
+        {
+            <li>
+                <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
+                    @post.Title
+                </a>
+
+            </li>
+        }
+    </ul>
+</div>
