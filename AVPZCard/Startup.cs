@@ -14,6 +14,7 @@ using AVPZCard.Data.Repository;
 using Microsoft.AspNetCore.Identity;
 using AVPZCard.Data.FileManager;
 
+
 namespace AVPZCard
 {
     public class Startup
@@ -86,11 +87,20 @@ namespace AVPZCard
 
             app.UseAuthorization();
 
+            
             app.UseEndpoints(endpoints =>
             {
+                
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{pageNumber}/{1}");
+
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{pageNumber}/{1}");
             });
         }
     }

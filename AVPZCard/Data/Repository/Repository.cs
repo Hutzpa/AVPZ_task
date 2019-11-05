@@ -19,6 +19,15 @@ namespace AVPZCard.Data.Repository
         {
             return _ctx.Posts.ToList();
         }
+
+        public List<Post> GetAllPosts(int pageNumber)
+        {
+            int pageSize = 5;
+            return _ctx.Posts
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .ToList();
+        } 
         public List<Post> GetAllPosts(string category)
         {
             return _ctx.Posts.
