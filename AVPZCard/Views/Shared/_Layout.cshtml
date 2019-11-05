@@ -6,6 +6,8 @@
     <title>Title = @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <meta name="description" content="@ViewBag.Description"/>
+    <meta name="keywords" content="@ViewBag.keywords"/>
 </head>
 <body>
     <header>
@@ -23,12 +25,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contacts">Контакты</a>
-                        </li> 
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Panel" asp-action="Index">Admin panel</a>
-                        </li>                        
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" asp-route-category="Особисте">Особисте</a>
+                        </li> 
                         @if (User.Identity.IsAuthenticated)
                         {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Panel" asp-action="Index">Admin panel</a>
+                            </li>                        
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Panel" asp-action="Edit">Add new</a>
                             </li>
@@ -55,7 +60,7 @@
         </main>
     </div>
 
-    <footer class="container modal-footer">
+    <footer class="container modal-footer fixed-bottom">
         <p class="text-left">&copy; All rights reserved</p>
     </footer>
 

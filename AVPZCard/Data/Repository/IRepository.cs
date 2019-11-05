@@ -12,6 +12,7 @@ namespace AVPZCard.Data.Repository
         Post GetPost(int id);
 
         List<Post> GetAllPosts();
+        List<Post> GetAllPosts(string category);
 
         void RemovePost(int id);
         void AddPost(Post post);

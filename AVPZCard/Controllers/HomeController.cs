@@ -22,10 +22,12 @@ namespace AVPZCard.Controllers
             _repo = repo;
             _fileManager = fileManager;
         }
-        public IActionResult Index()
+        public IActionResult Index(string category)
         {
             ViewData["Title"] = "Главная";
-            var posts = _repo.GetAllPosts();
+
+          
+            var posts = string.IsNullOrEmpty(category) ? _repo.GetAllPosts() : _repo.GetAllPosts(category);
             return View(posts);
         }
         public IActionResult Contacts()
