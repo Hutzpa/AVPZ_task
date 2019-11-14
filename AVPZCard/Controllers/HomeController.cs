@@ -9,6 +9,7 @@ using AVPZCard.Models;
 using AVPZCard.Data;
 using AVPZCard.Data.Repository;
 using AVPZCard.Data.FileManager;
+using AVPZCard.ViewModels;
 
 namespace AVPZCard.Controllers
 {
@@ -22,16 +23,17 @@ namespace AVPZCard.Controllers
             _repo = repo;
             _fileManager = fileManager;
         }
-        public IActionResult Index(int pageNumber, string category )
+        public IActionResult Index(int pageNumber, string category,string search)
         {
             ViewData["Title"] = "Главная";
 
             if (pageNumber < 1)
-                return RedirectToAction("Index", new { pageNumber = 1 , category });
-          
-            return View(string.IsNullOrEmpty(category) ?
-                _repo.GetAllPosts(pageNumber) :
-                _repo.GetAllPosts(category));
+                return RedirectToAction("Index", new { pageNumber = 1, category,search });
+
+
+            var viewModel = _repo.GetAllPosts(pageNumber,category,search);
+
+            return View(viewModel);
         }
         public IActionResult Contacts()
         {

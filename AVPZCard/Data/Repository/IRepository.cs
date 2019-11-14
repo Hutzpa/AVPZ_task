@@ -1,4 +1,5 @@
 ﻿using AVPZCard.Models;
+using AVPZCard.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace AVPZCard.Data.Repository
         Post GetPost(int id);
 
         List<Post> GetAllPosts();
-        List<Post> GetAllPosts(int pageNumber);
-        List<Post> GetAllPosts(string category);
+        IndexViewModel GetAllPosts(int pageNumber);
+        IndexViewModel GetAllPosts(int pageNumber, string category,string search);
 
         void RemovePost(int id);
         void AddPost(Post post);

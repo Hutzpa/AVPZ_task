@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Post>
+﻿@model IndexViewModel
 
 @{
     ViewBag.Title = "Blog ";
@@ -6,10 +6,21 @@
     ViewBag.keywords = "blog programming travel so on ";
 }
 <h2>This is an index page</h2>
-<img src="~/content/static/bruh.jpg" width="900px" height="400px" />
+@*<img src="~/content/static/bruh.jpg" width="900px" height="400px" />*@
+
+
+
+<li class="nav-item">
+    <form asp-controller="Home" asp-action="Index" method="get">
+        @*<input type="hidden" name="pageNumber"*@
+        <input type="hidden" name="category" value="@Model.Category" />
+        <input type="search" typeof="text" name="search" value="@Model.Search" placeholder="Введите ключевое слово" />
+    </form>
+</li>
+
 <div>
     <ul>
-        @foreach (var post in Model)
+        @foreach (var post in Model.Posts)
         {
             <li>
                 <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
@@ -19,4 +30,21 @@
             </li>
         }
     </ul>
+
+    <div>
+        @if (Model.PageNumber > 1)
+        {
+            <a asp-action="Index" asp-controller="Home" asp-route-category="@Model.Category"
+               asp-route-search="@Model.Search"
+               asp-route-pageNumber="@(Model.PageNumber-1 )">Previous Page</a>
+
+        }
+        @if (Model.CanNextPage)
+        {
+            <a asp-action="Index" asp-controller="Home" asp-route-category="@Model.Category"
+               asp-route-search="@Model.Search"
+               asp-route-pageNumber="@(Model.PageNumber + 1)">Next Page</a>
+
+        }
+    </div>
 </div>
