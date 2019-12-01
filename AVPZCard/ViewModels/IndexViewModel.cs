@@ -12,6 +12,7 @@ namespace AVPZCard.ViewModels
        public IEnumerable<Post> Posts { get; set; }
         public int PageNumber { get; set; }
         public string Category { get; set; }
+        public int PageCount { get; set; }
         public string Search { get; set; }
         public bool CanNextPage { get; set; }
     }

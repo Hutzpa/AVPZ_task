@@ -28,12 +28,21 @@
             <label>
                 Category
             </label>
-            <select asp-for="Category">
-                @foreach(var cat in ViewBag.Categories)
-                {
-                    <option value="@cat">@cat.CategoryName</option>
-                }
-            </select>
+            @if (Model.Category == null)
+            {
+                <select asp-for="CategoryId">
+                    @foreach (var cat in ViewBag.Categories)
+                    {
+                        <option value="@cat.Id_Category">@cat.CategoryName</option>
+                    }
+
+                </select>
+            }
+            else
+            {
+                <label>@Model.Category.CategoryName</label>
+                <input asp-for="CategoryId" type="hidden" value="@Model.CategoryId" />
+            }
         </div>
         <div>
             <label>

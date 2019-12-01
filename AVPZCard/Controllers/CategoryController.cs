@@ -42,6 +42,7 @@ namespace AVPZCard.Controllers
                     CategoryName = cat.CategoryName,
                     CategoryDescription = cat.CategoryDescription,
                     Photo = cat.Photo,
+                    Visible = cat.Visible,
 
                 });
             }
@@ -57,6 +58,7 @@ namespace AVPZCard.Controllers
                 CategoryName = cat.CategoryName,
                 CategoryDescription = cat.CategoryDescription,
                 Photo = cat.Photo,
+                Visible = cat.Visible
             };
             if (cat.Image == null)
                 post.Photo = cat.Photo;
@@ -79,6 +81,11 @@ namespace AVPZCard.Controllers
         public IActionResult CategoryList()
         {
             return View(_appDbContext.Categories.ToList());
+        }
+
+        public IActionResult ShowEnableCategories()
+        {
+            return View(_appDbContext.Categories.Where(o => o.Visible == true).ToList());
         }
 
         public async Task<IActionResult> RemoveAsync(int id)

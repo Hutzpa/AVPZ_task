@@ -26,6 +26,10 @@
             <input asp-for="Photo" type="hidden" />
             <input asp-for="Image" />
         </div>
+
+        <div>
+            <label>Отображать категорию?</label> @Html.CheckBox("Visible", true)
+        </div>
         <input type="submit" value="submit" />
     </form>
 </div>

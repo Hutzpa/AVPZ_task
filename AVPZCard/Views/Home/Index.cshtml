@@ -1,49 +1,13 @@
-﻿@model IndexViewModel
-
-@{
-    ViewBag.Title = "Blog ";
-    ViewBag.Description = "Blog title paaageeee ";
-    ViewBag.keywords = "blog programming travel so on ";
-}
-<h2>This is an index page</h2>
+﻿@model IEnumerable<Category>
 
 
 
-<li class="nav-item">
-    <form asp-controller="Home" asp-action="Index" method="get">
+<ul>
+    @foreach (Category ct in Model)
+    {
+        <li>
+            <a asp-action="PageWithCateg" asp-controller="Home" asp-route-category="@ct.CategoryName">@ct.CategoryName</a>
+        </li>
+    }
 
-        <input type="hidden" name="category" value="@Model.Category" />
-        <input type="search" typeof="text" name="search" value="@Model.Search" placeholder="Введите ключевое слово" />
-    </form>
-</li>
-
-<div>
-    <ul>
-        @foreach (var post in Model.Posts)
-        {
-            <li>
-                <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
-                    @post.Title
-                </a>
-
-            </li>
-        }
-    </ul>
-
-    <div>
-        @if (Model.PageNumber > 1)
-        {
-            <a asp-action="Index" asp-controller="Home" asp-route-category="@Model.Category"
-               asp-route-search="@Model.Search"
-               asp-route-pageNumber="@(Model.PageNumber-1 )">Previous Page</a>
-
-        }
-        @if (Model.CanNextPage)
-        {
-            <a asp-action="Index" asp-controller="Home" asp-route-category="@Model.Category"
-               asp-route-search="@Model.Search"
-               asp-route-pageNumber="@(Model.PageNumber + 1)">Next Page</a>
-
-        }
-    </div>
-</div>
+</ul>

@@ -23,17 +23,23 @@ namespace AVPZCard.Controllers
             _repo = repo;
             _fileManager = fileManager;
         }
-        public IActionResult Index(int pageNumber, string category,string search)
+        public IActionResult PageWithCateg(int pageNumber, string category,string search)
         {
             ViewData["Title"] = "Главная";
 
             if (pageNumber < 1)
-                return RedirectToAction("Index", new { pageNumber = 1, category,search });
+                return RedirectToAction("PageWithCateg", new { pageNumber = 1, category,search });
 
 
             var viewModel = _repo.GetAllPosts(pageNumber,category,search);
 
             return View(viewModel);
+        }
+
+        public IActionResult Index()
+        {
+            var c = _repo.DisplayCategories();
+            return View(c);
         }
         public IActionResult Contacts()
         {

@@ -13,12 +13,14 @@ namespace AVPZCard.Data.Repository
         Post GetPost(int id);
 
         List<Post> GetAllPosts();
-        IndexViewModel GetAllPosts(int pageNumber);
+  
         IndexViewModel GetAllPosts(int pageNumber, string category,string search);
 
         void RemovePost(int id);
         void AddPost(Post post);
         void UpdatePost(Post post);
+
+        IEnumerable<Category> DisplayCategories();
 
         Task<bool> SaveChangesAsync();
     }

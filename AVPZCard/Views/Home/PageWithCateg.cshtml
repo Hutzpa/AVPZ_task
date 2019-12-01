@@ -1,0 +1,47 @@
+﻿@model IndexViewModel
+
+@{
+    ViewBag.Title = "Blog ";
+    ViewBag.Description = "Blog title paaageeee ";
+    ViewBag.keywords = "blog programming travel so on ";
+}
+<h2>This is an index page</h2>
+
+<div>
+    <ul>
+        @foreach (var post in Model.Posts)
+        {
+            <li>
+                <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
+                    @post.Title
+                </a>
+
+            </li>
+        }
+    </ul>
+
+    <div>
+        @if (Model.PageNumber > 1)
+        {
+            <a asp-action="PageWithCateg" asp-controller="Home" asp-route-category="@Model.Category"
+               asp-route-search="@Model.Search"
+               asp-route-pageNumber="@(Model.PageNumber-1)">《</a>
+
+        }
+
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            <a asp-action="PageWithCateg" asp-controller="Home" asp-route-category="@Model.Category"
+               asp-route-search="@Model.Search"
+               asp-route-pageNumber="@i">@i</a>
+        }
+
+        @if (Model.CanNextPage)
+        {
+            <a asp-action="PageWithCateg" asp-controller="Home" asp-route-category="@Model.Category"
+               asp-route-search="@Model.Search"
+               asp-route-pageNumber="@(Model.PageNumber + 1)">》</a>
+
+        }
+    </div>
+</div>

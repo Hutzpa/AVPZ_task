@@ -50,14 +50,16 @@ namespace AVPZCard.Controllers
         [HttpGet]
         public IActionResult Edit(int? id)
         {
-            ViewBag.Categories = _dbContext.Categories.ToList();
+            var v = _dbContext.Categories.ToList();
+            ViewBag.Categories = v;
             ViewData["Title"] = "Edit";
             if (id == null)
                 return View(new PostViewModel()); 
             else
             {
                 var post = _repo.GetPost((int)id);
-                return View(new PostViewModel { 
+                return View(new PostViewModel
+                {
                     Id = post.Id,
                     Title = post.Title,
                     Body = post.Body,
@@ -66,7 +68,7 @@ namespace AVPZCard.Controllers
                     Tags = post.Tags,
                     Category = post.Category
 
-                });
+                }) ;
             }
 
         }
@@ -81,8 +83,7 @@ namespace AVPZCard.Controllers
                 Body = vm.Body,
                 Description = vm.Description,
                 Tags = vm.Tags,
-                Category = vm.Category,
-                CategoryId = vm.Category.Id_Category 
+                Category = _dbContext.Categories.FirstOrDefault(o=>o.Id_Category==vm.CategoryId)
             };
             if (vm.Image == null)
                 post.Image = vm.CurrentImage;

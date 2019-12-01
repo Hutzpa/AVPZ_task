@@ -10,14 +10,24 @@
     <meta name="keywords" content="@ViewBag.keywords" />
 </head>
 <body>
-    <header>
+    <div>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+
+               
+
+                <form asp-controller="Home" asp-action="PageWithCateg" method="get">
+                    <input class="pl-1" type="search" typeof="text" name="search" placeholder="Введите ключевое слово или номер" />
+                </form>
+
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+
+
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -28,7 +38,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark"  asp-controller="Home" asp-action="Index" asp-route-category="Категория">Особисте</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index" asp-route-category="Категория">Особисте</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -39,7 +49,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Panel" asp-action="Edit">Добавить новую деталь</a>
                             </li>
-                        
+
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Category" asp-action="Edit">Добавить новую категорию</a>
                             </li>
@@ -48,21 +58,43 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark"  asp-controller="Auth" asp-action="Logout">Log out</a>
+                                <a class="nav-link text-dark" asp-controller="Auth" asp-action="Logout">Log out</a>
                             </li>
 
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark"  asp-controller="Auth" asp-action="Login">Log in</a>
+                                <a class="nav-link text-dark" asp-controller="Auth" asp-action="Login">Log in</a>
                             </li>
                         }
                     </ul>
                 </div>
             </div>
         </nav>
-    </header>
+
+    </div>
+
+    <div style="background-color:bisque;">
+        <div class="ml-5"><a href="http://avtonasosy.com.ua/"><img src="http://avtonasosy.com.ua/image/data/avtonasosy.png" title="avtonasosy" alt="avtonasosy"></a></div>
+        <div class="header_text d-flex flex-row-reverse p-3">
+            <div class="align-self-start"><b>Адрес: г. Харьков Ул. Леся Сердюка 13</b></div>
+            <div class="align-self-end"><b>Телефон: (067)-759-79-15</b></div>
+        </div>
+    </div>
+    <div class="navbar navbar-expand-sm navbar-light" style="background-color:aqua;">
+        <ul class="navbar-nav flex-grow-1 d-flex justify-content-center ">
+            <li class="nav-item ">
+                <a class="nav-link text-dark" href="http://avtonasosy.com.ua/benzonasosy/">Лямбда зонды</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link text-dark" href="http://avtonasosy.com.ua/ljambda-zondy/">Датчики обс</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="http://avtonasosy.com.ua/toplivnye-fyltry/">Датчики положения распредвала</a>
+            </li>
+        </ul>
+    </div>
 
     <div class="container">
         <main role="main" class="pb-3">
