@@ -4,14 +4,16 @@ using AVPZCard.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AVPZCard.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191124132018_Update")]
+    partial class Update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +52,7 @@ namespace AVPZCard.Migrations
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int?>("CategoryId_Category")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -73,7 +75,7 @@ namespace AVPZCard.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CategoryId_Category");
 
                     b.ToTable("Posts");
                 });
@@ -278,7 +280,7 @@ namespace AVPZCard.Migrations
                 {
                     b.HasOne("AVPZCard.Models.Category", "Category")
                         .WithMany("PostsThisCategory")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId_Category");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

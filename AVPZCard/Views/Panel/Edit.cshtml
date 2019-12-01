@@ -29,9 +29,10 @@
                 Category
             </label>
             <select asp-for="Category">
-                <option value="Особисте">Особисте</option>
-                <option value="Робота">Робота</option>
-                <option value="Успіхи">Успіхи</option>
+                @foreach(var cat in ViewBag.Categories)
+                {
+                    <option value="@cat">@cat.CategoryName</option>
+                }
             </select>
         </div>
         <div>

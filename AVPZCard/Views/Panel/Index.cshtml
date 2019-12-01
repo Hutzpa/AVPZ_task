@@ -3,13 +3,16 @@
 @{
 
 }
-<h2>Admin panel!</h2>
+<h2>Панель администратора</h2>
 <div>
     <ul>
         @foreach (var post in Model)
         {
             <li>
-                @post.Title
+                <span>Название детали <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id"> @post.Title</a> </span>
+                <span>категория - @post.Category?.CategoryName</span>
+
+               
                 
                 <a asp-controller="Panel" asp-action="Edit" asp-route-id="@post.Id">
                     Edit

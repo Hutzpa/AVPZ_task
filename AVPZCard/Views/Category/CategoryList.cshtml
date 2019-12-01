@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Category>
+
+@{
+
+}
+<h2>Admin panel!</h2>
+<div>
+    <ul>
+        @foreach (var category in Model)
+        {
+            <li>
+                @category.CategoryName
+
+                <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id_Category">
+                    Редактировать
+                </a>
+                -
+                <a asp-controller="Category" asp-action="Remove" asp-route-id="@category.Id_Category">
+                    Удалить
+                </a>
+            </li>
+        }
+    </ul>
+</div>

@@ -44,25 +44,29 @@ namespace AVPZCard.Data.Repository
             string search)
         {
 
-            Func<Post, bool> InCategory = (post) => { return post.Category.ToLower().Equals(category); };
+            Func<Post, bool> InCategory = (post) => { return post.Category.CategoryName.Equals(category); };
 
             int pageSize = 5;
             int skipAmount = pageSize * (pageNumber - 1);
 
             //AsNoTracking не будет отслеживать изменения найденых постов (но увеличивает скорость)
             //последи за сохранением
-            var query = _ctx.Posts.AsNoTracking().AsQueryable();
+            var query = _ctx.Posts.Include(p => p.Category).AsNoTracking().AsQueryable();
+                //.AsNoTracking().AsQueryable();
 
             if (!String.IsNullOrEmpty(category))
-                query.Where(x => InCategory(x));
+            {
+
+            var cat = query.Where(x => InCategory(x));
+            }
 
             if (!String.IsNullOrEmpty(search))
                 query = query.Where(x => EF.Functions.Like(x.Title, $"%{search}%")
                 || EF.Functions.Like(x.Body, $"%{search}%")
                 || EF.Functions.Like(x.Description, $"%{search}%"));
 
-
                 int postCount = query.Count();
+
 
             return new IndexViewModel
             {

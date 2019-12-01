@@ -1,4 +1,5 @@
-﻿using AVPZCard.Data.FileManager;
+﻿using AVPZCard.Data;
+using AVPZCard.Data.FileManager;
 using AVPZCard.Data.Repository;
 using AVPZCard.Models;
 using AVPZCard.ViewModels;
@@ -15,11 +16,15 @@ namespace AVPZCard.Controllers
     [Authorize(Roles = "Admin")]
     public class PanelController : Controller
     {
+        private AppDbContext _dbContext;
         private IRepository _repo;
         private IFileManager _fileManager;
 
-        public PanelController(IRepository repo, IFileManager fileManager)
+        public PanelController(IRepository repo, 
+            IFileManager fileManager,
+            AppDbContext dbContext)
         {
+            _dbContext = dbContext;
             _repo = repo;
             _fileManager = fileManager;
         }
@@ -45,6 +50,7 @@ namespace AVPZCard.Controllers
         [HttpGet]
         public IActionResult Edit(int? id)
         {
+            ViewBag.Categories = _dbContext.Categories.ToList();
             ViewData["Title"] = "Edit";
             if (id == null)
                 return View(new PostViewModel()); 
@@ -75,7 +81,8 @@ namespace AVPZCard.Controllers
                 Body = vm.Body,
                 Description = vm.Description,
                 Tags = vm.Tags,
-                Category = vm.Category
+                Category = vm.Category,
+                CategoryId = vm.Category.Id_Category 
             };
             if (vm.Image == null)
                 post.Image = vm.CurrentImage;

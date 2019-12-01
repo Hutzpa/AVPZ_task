@@ -6,13 +6,12 @@
     ViewBag.keywords = "blog programming travel so on ";
 }
 <h2>This is an index page</h2>
-@*<img src="~/content/static/bruh.jpg" width="900px" height="400px" />*@
 
 
 
 <li class="nav-item">
     <form asp-controller="Home" asp-action="Index" method="get">
-        @*<input type="hidden" name="pageNumber"*@
+
         <input type="hidden" name="category" value="@Model.Category" />
         <input type="search" typeof="text" name="search" value="@Model.Search" placeholder="Введите ключевое слово" />
     </form>

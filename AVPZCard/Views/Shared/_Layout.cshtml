@@ -6,8 +6,8 @@
     <title>Title = @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <meta name="description" content="@ViewBag.Description"/>
-    <meta name="keywords" content="@ViewBag.keywords"/>
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="keywords" content="@ViewBag.keywords" />
 </head>
 <body>
     <header>
@@ -21,33 +21,41 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutMe">О нас</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="AboutMe">О нас</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contacts">Оплата и доставка</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Contacts">Оплата и доставка</a>
                         </li>
-                        
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" asp-route-category="Особисте">Особисте</a>
-                        </li> 
+                            <a class="nav-link text-dark"  asp-controller="Home" asp-action="Index" asp-route-category="Категория">Особисте</a>
+                        </li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Panel" asp-action="Index">Admin panel</a>
-                            </li>                        
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Panel" asp-action="Edit">Add new</a>
+                                <a class="nav-link text-dark" asp-controller="Panel" asp-action="Index">Admin panel</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Log out</a>
+                                <a class="nav-link text-dark" asp-controller="Panel" asp-action="Edit">Добавить новую деталь</a>
+                            </li>
+                        
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Category" asp-action="Edit">Добавить новую категорию</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Category" asp-action="CategoryList">Список категорий</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"  asp-controller="Auth" asp-action="Logout">Log out</a>
                             </li>
 
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Log in</a>
+                                <a class="nav-link text-dark"  asp-controller="Auth" asp-action="Login">Log in</a>
                             </li>
                         }
                     </ul>
@@ -55,6 +63,7 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
