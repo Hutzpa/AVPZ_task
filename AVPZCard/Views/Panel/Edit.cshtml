@@ -8,25 +8,25 @@
         <input asp-for="Id" type="hidden" />
         <div>
             <label>
-                Title
+                Название детали -
             </label>
             <input asp-for="Title" />
         </div>
         <div>
             <label>
-                Description
+                Описание для поисковиков -
             </label>
             <input asp-for="Description" />
         </div>
         <div>
             <label>
-                Tags
+                Теги -
             </label>
             <input asp-for="Tags" />
         </div>
         <div>
             <label>
-                Category
+                Категория -
             </label>
             @if (Model.Category == null)
             {
@@ -46,13 +46,37 @@
         </div>
         <div>
             <label>
-                Body
+                Производитель -
+            </label>
+            <input asp-for="Manufacturer" />
+        </div>
+        <div>
+            <label>
+                В наличии -
+            </label>
+            @Html.CheckBox("IsAble", true)
+        </div>
+        <div>
+            <label>
+                Номер детали -
+            </label>
+            <input asp-for="DetailNumber" />
+        </div>
+        <div>
+            <label>
+                Цена -
+            </label>
+            <input asp-for="Price" />
+        </div>
+        <div>
+            <label>
+                Основное описание -
             </label>
             <textarea id="editor" asp-for="Body"> </textarea>
         </div>
         <div>
             <label>
-                Image
+                Фото детали -
             </label>
             <input asp-for="CurrentImage" type="hidden" />
             <input asp-for="Image" />

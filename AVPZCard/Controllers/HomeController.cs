@@ -38,8 +38,7 @@ namespace AVPZCard.Controllers
 
         public IActionResult Index()
         {
-            var c = _repo.DisplayCategories();
-            return View(c);
+            return View(_repo.DisplayCategories());
         }
         public IActionResult Contacts()
         {

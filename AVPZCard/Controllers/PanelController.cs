@@ -63,11 +63,15 @@ namespace AVPZCard.Controllers
                     Id = post.Id,
                     Title = post.Title,
                     Body = post.Body,
-                    CurrentImage = post.Image,
                     Description = post.Description,
+                    Manufacturer = post.Manufacturer,
+                    DetailNumber = post.DetailNumber,
+                    CurrentImage = post.Image,
+                    Price = post.Price,
+                    IsAble = post.IsAble,
                     Tags = post.Tags,
-                    Category = post.Category
-
+                    Category = post.Category,                    
+                    
                 }) ;
             }
 
@@ -82,6 +86,10 @@ namespace AVPZCard.Controllers
                 Title = vm.Title,
                 Body = vm.Body,
                 Description = vm.Description,
+                Manufacturer = vm.Manufacturer,
+                DetailNumber = vm.DetailNumber,
+                Price = vm.Price,
+                IsAble = vm.IsAble,
                 Tags = vm.Tags,
                 Category = _dbContext.Categories.FirstOrDefault(o=>o.Id_Category==vm.CategoryId)
             };

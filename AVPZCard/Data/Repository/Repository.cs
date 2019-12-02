@@ -27,19 +27,19 @@ namespace AVPZCard.Data.Repository
             string search)
         {
 
-            Func<Post, bool> InCategory = (post) => { return post.Category.CategoryName.Equals(category); };
+           // Func<Post, bool> InCategory = (post) => { return post.Category.CategoryName == category; };
 
             int pageSize = 5;
             int skipAmount = pageSize * (pageNumber - 1);
 
             //AsNoTracking не будет отслеживать изменения найденых постов (но увеличивает скорость)
             //последи за сохранением
-            var query = _ctx.Posts.Include(p => p.Category).AsNoTracking().AsQueryable();
-
+            var query = _ctx.Posts.Include(p => p.Category).AsNoTracking();
+            
 
             if (!String.IsNullOrEmpty(category))
             {
-                var cat = query.Where(x => InCategory(x));
+                query = query.Where(c => c.Category.CategoryName == category);
             }
 
 

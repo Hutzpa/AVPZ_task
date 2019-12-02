@@ -72,7 +72,7 @@ namespace AVPZCard.Controllers
 
 
             if (await _appDbContext.SaveChangesAsync() != 0)
-                return RedirectToAction("Index", "Panel");
+                return RedirectToAction("CategoryList", "Category");
             else
                 return View(post);
         }
