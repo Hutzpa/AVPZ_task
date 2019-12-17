@@ -16,7 +16,7 @@ namespace AVPZCard.ViewModels
 
         public string Photo { get; set; } = "";
 
-        public bool Visible { get; set; }
+        public bool Visible { get; set; } = true;
 
         public List<Post> PostsThisCategory { get; set; }
 

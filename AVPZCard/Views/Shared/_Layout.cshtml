@@ -11,22 +11,13 @@
 </head>
 <body>
     <div>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow ">
             <div class="container">
-
-               
-
-                <form asp-controller="Home" asp-action="PageWithCateg" method="get">
-                    <input class="pl-1" type="search" typeof="text" name="search" placeholder="Введите ключевое слово или номер" />
-                </form>
-
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                <a class="navbar-brand"  asp-controller="Home" asp-action="Index">Главная</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-
 
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
@@ -36,33 +27,50 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Contacts">Оплата и доставка</a>
                         </li>
-                       
+
+                        <li class="nav-item mt-2">
+                            <form asp-controller="Home" asp-action="PageWithCateg" method="get">
+                                <input class="pl-1" type="search" typeof="text" name="search" placeholder="Введите ключевое слово или номер" />
+                            </form>
+                        </li>
+
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Panel" asp-action="Index">Admin panel</a>
+                            <li class="nav-item mr-2">
+                                <div class="dropdown show">
+                                    <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Детали
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" asp-controller="Panel" asp-action="Index">Список деталей</a>
+
+                                        <a class="dropdown-item" asp-controller="Panel" asp-action="Edit">Добавить новую деталь</a>
+                                    </div>
+                                </div>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Panel" asp-action="Edit">Добавить новую деталь</a>
+                                <div class="dropdown show">
+                                    <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Категории
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" asp-controller="Category" asp-action="Edit">Добавить новую категорию</a>
+
+                                        <a class="dropdown-item" asp-controller="Category" asp-action="CategoryList">Список категорий</a>
+                                    </div>
+                                </div>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Category" asp-action="Edit">Добавить новую категорию</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Category" asp-action="CategoryList">Список категорий</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Auth" asp-action="Logout">Log out</a>
+                                <a class="nav-link text-dark" asp-controller="Auth" asp-action="Logout">Выйти</a>
                             </li>
 
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Auth" asp-action="Login">Log in</a>
+                                <a class="nav-link text-dark" asp-controller="Auth" asp-action="Login">Войти</a>
                             </li>
                         }
                     </ul>
@@ -72,25 +80,18 @@
 
     </div>
 
-    <div style="background-color:bisque;">
-        <div class="ml-5"><a href="http://avtonasosy.com.ua/"><img src="http://avtonasosy.com.ua/image/data/avtonasosy.png" title="avtonasosy" alt="avtonasosy"></a></div>
-        <div class="header_text d-flex flex-row-reverse p-3">
-            <div class="align-self-start"><b>Адрес: г. Харьков Ул. Леся Сердюка 13</b></div>
-            <div class="align-self-end"><b>Телефон: (067)-759-79-15</b></div>
+
+
+    <div class="d-flex bd-highlight" style="background-color:transparent;">
+        <div class="p-0 w-75 bd-highlight"><a asp-controller="Home" asp-action="Index"><img src="http://avtonasosy.com.ua/image/data/avtonasosy.png" title="avtonasosy" alt="avtonasosy"></a></div>
+        <div class="p-0 flex-shrink-1 bd-highlight col-md-offset-4">
+            <div class=" col-md-offset-4"><b>Адрес: г.Харьков Нурешная 322</b></div>
+            <div class=" col-md-offset-4"><b>Телефон: (097) - 111 - 11 - 11</b></div>
         </div>
     </div>
-    <div class="navbar navbar-expand-sm navbar-light" style="background-color:aqua;">
-        <ul class="navbar-nav flex-grow-1 d-flex justify-content-center ">
-            <li class="nav-item ">
-                <a class="nav-link text-dark" href="http://avtonasosy.com.ua/benzonasosy/">Лямбда зонды</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link text-dark" href="http://avtonasosy.com.ua/ljambda-zondy/">Датчики обс</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="http://avtonasosy.com.ua/toplivnye-fyltry/">Датчики положения распредвала</a>
-            </li>
-        </ul>
+
+    <div class="mb-1">
+        @await Html.PartialAsync("_CategoryListPartial.cshtml")
     </div>
 
     <div class="container">
@@ -99,8 +100,8 @@
         </main>
     </div>
 
-    <footer class="container fixed-bottom">
-        <p class="text-right">&copy; All rights reserved</p>
+    <footer class="mr-5 d-inline-flex float-right">
+        <p>&copy; All rights reserved</p>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

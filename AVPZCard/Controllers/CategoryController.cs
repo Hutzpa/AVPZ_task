@@ -31,7 +31,7 @@ namespace AVPZCard.Controllers
         {
             if (id == null)
             {
-                return View();
+                return View(new CategoryViewModel());
             }
             else
             {

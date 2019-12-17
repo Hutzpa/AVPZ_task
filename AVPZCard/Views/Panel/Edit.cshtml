@@ -5,83 +5,149 @@
 <link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
 <div>
     <form asp-controller="Panel" asp-action="Edit" method="post" enctype="multipart/form-data">
-        <input asp-for="Id" type="hidden" />
-        <div>
-            <label>
-                Название детали -
-            </label>
-            <input asp-for="Title" />
-        </div>
-        <div>
-            <label>
-                Описание для поисковиков -
-            </label>
-            <input asp-for="Description" />
-        </div>
-        <div>
-            <label>
-                Теги -
-            </label>
-            <input asp-for="Tags" />
-        </div>
-        <div>
-            <label>
-                Категория -
-            </label>
-            @if (Model.Category == null)
-            {
-                <select asp-for="CategoryId">
-                    @foreach (var cat in ViewBag.Categories)
-                    {
-                        <option value="@cat.Id_Category">@cat.CategoryName</option>
-                    }
+        <table>
+            <tr>
+                <td>
+                    <input asp-for="Id" type="hidden" />
 
-                </select>
-            }
-            else
-            {
-                <label>@Model.Category.CategoryName</label>
-                <input asp-for="CategoryId" type="hidden" value="@Model.CategoryId" />
-            }
-        </div>
-        <div>
-            <label>
-                Производитель -
-            </label>
-            <input asp-for="Manufacturer" />
-        </div>
-        <div>
-            <label>
-                В наличии -
-            </label>
-            @Html.CheckBox("IsAble", true)
-        </div>
-        <div>
-            <label>
-                Номер детали -
-            </label>
-            <input asp-for="DetailNumber" />
-        </div>
-        <div>
-            <label>
-                Цена -
-            </label>
-            <input asp-for="Price" />
-        </div>
-        <div>
-            <label>
-                Основное описание -
-            </label>
-            <textarea id="editor" asp-for="Body"> </textarea>
-        </div>
-        <div>
-            <label>
-                Фото детали -
-            </label>
-            <input asp-for="CurrentImage" type="hidden" />
-            <input asp-for="Image" />
-        </div>
-        <input type="submit" value="submit" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Название детали -
+                    </label>
+                </td>
+                <td>
+                    <input asp-for="Title" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Описание для поисковиков -
+                    </label>
+                </td>
+                <td>
+                    <input asp-for="Description" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+
+                    <label>
+                        Теги -
+                    </label>
+                </td>
+                <td>
+                    <input asp-for="Tags" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Категория -
+                    </label>
+                </td>
+
+                @if (Model.Category == null)
+                {
+                    <td>
+                        <select asp-for="CategoryId">
+                            @foreach (var cat in ViewBag.Categories)
+                            {
+                                <option value="@cat.Id_Category">@cat.CategoryName</option>
+                            }
+
+                        </select>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                    </td>
+                    <td>
+                        <label>@Model.Category.CategoryName</label>
+                        <input asp-for="CategoryId" type="hidden" value="@Model.CategoryId" />
+                    </td>
+
+                }
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Производитель -
+                    </label>
+                </td>
+                <td>
+                    <input asp-for="Manufacturer" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        В наличии -
+                    </label>
+                </td>
+                <td>
+                    @Html.CheckBox("IsAble", Model.IsAble)
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Номер детали -
+                    </label>
+                </td>
+                <td>
+                    <input asp-for="DetailNumber" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Цена -
+                    </label>
+                </td>
+                <td>
+                    <input asp-for="Price" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Основное описание -
+                    </label>
+                </td>
+                <td>
+                    <textarea id="editor" asp-for="Body"> </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Фото детали -
+                    </label>
+                </td>
+                <td>
+                    <input asp-for="CurrentImage" type="hidden" />
+                    <input asp-for="Image" />
+
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Сохранить" />
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
 

@@ -5,32 +5,58 @@
 <link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
 <div>
     <form asp-controller="Category" asp-action="Edit" method="post" enctype="multipart/form-data">
-        <input asp-for="Id_Category" type="hidden" />
-        <div>
-            <label>
-                Название категории
-            </label>
-            <input asp-for="CategoryName" />
-        </div>
-        <div>
-            <label>
-                Описание
-            </label>
-            <input asp-for="CategoryDescription" />
-        </div>
-        
-        <div>
-            <label>
-                Image
-            </label>
-            <input asp-for="Photo" type="hidden" />
-            <input asp-for="Image" />
-        </div>
+        <table>
+            <tr>
+                <td>
 
-        <div>
-            <label>Отображать категорию?</label> @Html.CheckBox("Visible", true)
-        </div>
-        <input type="submit" value="submit" />
+                    <input asp-for="Id_Category" type="hidden" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Название категории
+                    </label>
+                </td>
+                <td>
+                    <input asp-for="CategoryName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Описание
+                    </label>
+                </td>
+                <td>
+                    <input asp-for="CategoryDescription" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>
+                        Image
+                    </label>
+                </td>
+                <td>
+                    <input asp-for="Photo" type="hidden" />
+                    <input asp-for="Image" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <label>Отображать категорию?</label> @Html.CheckBox("Visible", Model.Visible)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Сохранить" />
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
 

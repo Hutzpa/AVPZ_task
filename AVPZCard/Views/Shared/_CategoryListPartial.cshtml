@@ -1,0 +1,23 @@
+﻿@using AVPZCard.Data.Repository
+
+
+@inject AVPZCard.Data.AppDbContext context
+
+@{
+    var catList = context.Categories.Where(o => o.Visible == true);
+}
+
+
+
+
+<div class="navbar navbar-expand-sm navbar-light" style="background-color:lightgray;">
+    <ul class="navbar-nav flex-grow-1 d-flex justify-content-center ">
+        @foreach (Category c in catList)
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-action="PageWithCateg" asp-controller="Home" asp-route-category="@c.CategoryName"> @c.CategoryName</a>
+            </li>
+
+        }
+    </ul>
+</div>

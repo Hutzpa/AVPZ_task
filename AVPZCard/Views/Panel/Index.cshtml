@@ -5,23 +5,44 @@
 }
 <h2>Панель администратора</h2>
 <div>
-    <ul>
-        @foreach (var post in Model)
-        {
-            <li>
-                <span>Название детали <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id"> @post.Title</a> </span>
-                <span>категория - @post.Category?.CategoryName</span>
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <td>
+                    Название
+                </td>
+                <td>
+                    Категория
+                </td>
+                <td>
+                    Действия
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id"> @post.Title</a>
+                    </td>
+                    <td>
+                        <span>категория - @post.Category?.CategoryName</span>
+                    </td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="Panel" asp-action="Edit" asp-route-id="@post.Id">
+                            Редактировать
+                        </a>
+                        
+                        <a class="btn btn-danger" asp-controller="Panel" asp-action="Remove" asp-route-id="@post.Id">
+                            Удалить
+                        </a>
 
-               
-                
-                <a asp-controller="Panel" asp-action="Edit" asp-route-id="@post.Id">
-                    Edit
-                </a>
-                -
-                <a asp-controller="Panel" asp-action="Remove" asp-route-id="@post.Id">
-                    Remove
-                </a>
-            </li>
-        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <ul>
     </ul>
 </div>

@@ -27,8 +27,6 @@ namespace AVPZCard.Data.Repository
             string search)
         {
 
-           // Func<Post, bool> InCategory = (post) => { return post.Category.CategoryName == category; };
-
             int pageSize = 5;
             int skipAmount = pageSize * (pageNumber - 1);
 
@@ -49,12 +47,12 @@ namespace AVPZCard.Data.Repository
                 || EF.Functions.Like(x.Description, $"%{search}%"));
 
             int postCount = query.Count();
-
+            var canNext = postCount > skipAmount + pageSize;
 
             return new IndexViewModel
             {
                 PageNumber = pageNumber,
-                CanNextPage = postCount > skipAmount + pageSize,
+                CanNextPage = canNext,
                 PageCount = (int) Math.Ceiling((double) postCount / pageSize),
                 Category = category,
                 Search = search,

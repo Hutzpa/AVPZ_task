@@ -5,20 +5,38 @@
 }
 <h2>Admin panel!</h2>
 <div>
-    <ul>
-        @foreach (var category in Model)
-        {
-            <li>
-                @category.CategoryName
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <td>
+                    Название
+                </td>
+                <td>
+                    Действия
+                </td>
 
-                <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id_Category">
-                    Редактировать
-                </a>
-                -
-                <a asp-controller="Category" asp-action="Remove" asp-route-id="@category.Id_Category">
-                    Удалить
-                </a>
-            </li>
-        }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>
+                        @category.CategoryName
+                    </td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id_Category">
+                            Редактировать
+                        </a>
+                        <a class="btn btn-danger" asp-controller="Category" asp-action="Remove" asp-route-id="@category.Id_Category">
+                            Удалить
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <ul>
     </ul>
 </div>

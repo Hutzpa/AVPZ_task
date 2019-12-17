@@ -1,13 +1,20 @@
 ﻿@model IEnumerable<Category>
 
 
+<div class="container-fluid">
+    <div class="row">
+        @foreach (Category ct in Model)
+        {
+            <div class="col-3" >
 
-<ul>
-    @foreach (Category ct in Model)
-    {
-        <li>
-            <a asp-action="PageWithCateg" asp-controller="Home" asp-route-category="@ct.CategoryName">@ct.CategoryName</a>
-        </li>
-    }
+                @if (!String.IsNullOrEmpty(ct.Photo))
+                {
+                    var image_path = $"/Image/{ct.Photo}";
+                    <img src="@image_path" width="200" height="200" />
+                }
+                <a asp-action="PageWithCateg" asp-controller="Home" asp-route-category="@ct.CategoryName">@ct.CategoryName</a>
+            </div>
+        }
+    </div>
+</div>
 
-</ul>
