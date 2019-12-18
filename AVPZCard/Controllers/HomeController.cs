@@ -23,7 +23,7 @@ namespace AVPZCard.Controllers
             _repo = repo;
             _fileManager = fileManager;
         }
-        public IActionResult PageWithCateg(int pageNumber, string category,string search)
+        public IActionResult PageWithCateg(int pageNumber, int category,string search)
         {
             ViewData["Title"] = "Главная";
 

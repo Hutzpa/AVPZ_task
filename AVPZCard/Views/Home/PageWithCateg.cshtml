@@ -1,9 +1,9 @@
 ﻿@model IndexViewModel
 
 @{
-    ViewBag.Title = Model.Category;
+    ViewBag.Title = Model.Category.CategoryName;
 }
-<h2>@Model.Category</h2>
+<h2>@Model.Category.CategoryName</h2>
 
 @if (Model.Posts?.Count() > 0)
 {

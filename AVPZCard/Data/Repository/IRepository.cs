@@ -14,7 +14,7 @@ namespace AVPZCard.Data.Repository
 
         List<Post> GetAllPosts();
   
-        IndexViewModel GetAllPosts(int pageNumber, string category,string search);
+        IndexViewModel GetAllPosts(int pageNumber, int category,string search);
 
         void RemovePost(int id);
         void AddPost(Post post);

@@ -23,7 +23,7 @@ namespace AVPZCard.Data.Repository
         }
 
         public IndexViewModel GetAllPosts(int pageNumber,
-            string category,
+            int category,
             string search)
         {
 
@@ -35,9 +35,9 @@ namespace AVPZCard.Data.Repository
             var query = _ctx.Posts.Include(p => p.Category).AsNoTracking();
             
 
-            if (!String.IsNullOrEmpty(category))
+            if (category != 0)
             {
-                query = query.Where(c => c.Category.CategoryName == category);
+                query = query.Where(c => c.Category.Id_Category == category);
             }
 
 
@@ -54,7 +54,7 @@ namespace AVPZCard.Data.Repository
                 PageNumber = pageNumber,
                 CanNextPage = canNext,
                 PageCount = (int) Math.Ceiling((double) postCount / pageSize),
-                Category = category,
+                Category = _ctx.Categories.FirstOrDefault(o=>o.Id_Category == category),
                 Search = search,
                 Posts = query
                     .Skip(skipAmount)
