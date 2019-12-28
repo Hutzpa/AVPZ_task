@@ -1,6 +1,6 @@
 ﻿@model PostViewModel
 @{
-
+    ViewData["TItle"] = "Управление деталью";
 }
 <link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
 <div>
@@ -52,8 +52,8 @@
                     </label>
                 </td>
 
-                @if (Model.Category == null)
-                {
+                @*@if (Model.Category == null)
+                {*@
                     <td>
                         <select asp-for="CategoryId">
                             @foreach (var cat in ViewBag.Categories)
@@ -63,7 +63,7 @@
 
                         </select>
                     </td>
-                }
+                @*}
                 else
                 {
                     <td>
@@ -73,7 +73,7 @@
                         <input asp-for="CategoryId" type="hidden" value="@Model.CategoryId" />
                     </td>
 
-                }
+                }*@
             </tr>
             <tr>
                 <td>

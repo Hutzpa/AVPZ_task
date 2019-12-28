@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<Category>
 
+@{
+    ViewData["Title"] = "Категории";
+
+}
 
 <div class="container-fluid">
     <div class="row">
         @foreach (Category ct in Model)
         {
-            <div class="col-3" >
+            <div class="col-3">
 
                 @if (!String.IsNullOrEmpty(ct.Photo))
                 {

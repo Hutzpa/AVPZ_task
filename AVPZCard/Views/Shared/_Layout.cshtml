@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title = @ViewData["Title"]</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <meta name="description" content="@ViewBag.Description" />
@@ -36,7 +36,7 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item mr-2">
+                            <li class="nav-item ml-2 mr-2">
                                 <div class="dropdown show">
                                     <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Детали
@@ -49,7 +49,7 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item ">
                                 <div class="dropdown show">
                                     <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Категории
@@ -83,7 +83,7 @@
 
 
     <div class="d-flex bd-highlight" style="background-color:transparent;">
-        <div class="p-0 w-75 bd-highlight"><a asp-controller="Home" asp-action="Index"><img src="http://avtonasosy.com.ua/image/data/avtonasosy.png" title="avtonasosy" alt="avtonasosy"></a></div>
+        <div class="p-0 w-75 bd-highlight ml-5"><a asp-controller="Home" asp-action="Index"><img src="http://avtonasosy.com.ua/image/data/avtonasosy.png" title="avtonasosy" alt="avtonasosy"></a></div>
         <div class="p-0 flex-shrink-1 bd-highlight col-md-offset-4">
             <div class=" col-md-offset-4"><b>Адрес: г.Харьков Нурешная 322</b></div>
             <div class=" col-md-offset-4"><b>Телефон: (097) - 111 - 11 - 11</b></div>

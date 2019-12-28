@@ -1,9 +1,10 @@
 ﻿@model IndexViewModel
 
 @{
-    ViewBag.Title = Model.Category.CategoryName;
+        ViewData["Title"] = Model?.Category?.CategoryName;
 }
-<h2>@Model.Category.CategoryName</h2>
+
+<h2>@Model?.Category?.CategoryName</h2>
 
 @if (Model.Posts?.Count() > 0)
 {
@@ -62,5 +63,5 @@
 }
 else
 {
-    <label> В этой категории ещё нет деталей </label>
+    <label> Ничего не найдено </label>
 }

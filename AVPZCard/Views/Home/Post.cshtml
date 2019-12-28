@@ -1,13 +1,13 @@
 ﻿@model Post
 
 @{
-    ViewBag.Title = Model.Title;
+        ViewData["Title"] = Model.Title;
     ViewBag.Description = Model.Description;
     ViewBag.keywords = $"{Model.Tags?.Replace(",", "")} {Model.Category}";
 }
 
-<div class="d-flex flex-row bd-highlight mb-3">
-    <div class="p-2 bd-highlight">
+<div class="d-flex flex-row bd-highlight mb-1">
+    <div class=" bd-highlight">
 
         @if (!String.IsNullOrEmpty(Model.Image))
         {
@@ -17,8 +17,8 @@
         }
 
     </div>
-    <div class="p-2 bd-highlight"   >
-        <h5>@Model.Title</h5>
+    <div class="bd-highlight"   >
+        <h5> @Model.Title</h5>
         <br />
         <label><strong> Производитель</strong> : @Model.Manufacturer</label>
         <br />
@@ -33,4 +33,9 @@
     </div>
 </div>
 
+<label><strong>Описание детали:</strong> </label>
+
+<div class="border">
+
 <p>@Html.Raw(Model.Body)</p>
+</div>
