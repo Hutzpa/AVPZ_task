@@ -29,7 +29,7 @@ namespace AVPZCard
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["DefaultConnection"]));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Data Source=SQL6007.site4now.net;Initial Catalog=DB_A50403_AvtoDatchiki;User Id=DB_A50403_AvtoDatchiki_admin;Password=1Password_;"));
 
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>

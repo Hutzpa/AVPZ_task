@@ -22,7 +22,7 @@ namespace AVPZCard.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MyBlog;Trusted_Connection=true;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer("Data Source=SQL6007.site4now.net;Initial Catalog=DB_A50403_AvtoDatchiki;User Id=DB_A50403_AvtoDatchiki_admin;Password=1Password_;");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

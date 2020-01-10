@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AVPZCard.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191202191832_detail1")]
-    partial class detail1
+    [Migration("20191228232157_ininit")]
+    partial class ininit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

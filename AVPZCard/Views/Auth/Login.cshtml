@@ -1,21 +1,35 @@
 ﻿@model LoginViewModel
 
-@{ 
-        ViewData["Title"] = "Войти";
+@{
+    ViewData["Title"] = "Войти";
 }
 
 <form asp-controller="Auth" asp-action="Login" method="post">
-    <div>
-        <label>
-            Username
-        </label>
-        <input asp-for="Username" />
-    </div>
-    <div>
-        <label>
-            Password
-        </label>
-        <input asp-for="Password" />
-    </div>
-    <input type="submit" value="Sign In" />
+    <table class="text-center">
+        <tr>
+            <td>
+                <label>
+                    Имя пользователя
+                </label>
+            </td>
+            <td>
+                <input asp-for="Username" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    Пароль
+                </label>
+            </td>
+            <td>
+                <input asp-for="Password" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Войти" />
+            </td>
+        </tr>
+    </table>
 </form>
