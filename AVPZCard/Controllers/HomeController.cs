@@ -17,11 +17,16 @@ namespace AVPZCard.Controllers
     {
         private IRepository _repo;
         private IFileManager _fileManager;
+        private AppDbContext _dbContext;
 
-        public HomeController(IRepository repo, IFileManager fileManager)
+        public HomeController(IRepository repo, 
+            IFileManager fileManager,
+            AppDbContext dbContext)
         {
             _repo = repo;
             _fileManager = fileManager;
+            _dbContext = dbContext;
+
         }
         public IActionResult PageWithCateg(int pageNumber, int category,string search)
         {
@@ -43,11 +48,21 @@ namespace AVPZCard.Controllers
         public IActionResult Contacts()
         {
             ViewData["Title"] = "Контакты";
+            if (_dbContext.Abouts.Count() > 0)
+            {
+                var ps = _dbContext.Abouts.First();
+                return View(new AboutViewModel { About = ps.AboutMe, Contacts = ps.Contacts });
+            }
             return View();
         }
         public IActionResult AboutMe()
         {
             ViewData["Title"] = "Про меня";
+            if (_dbContext.Abouts.Count() > 0)
+            {
+                var ps = _dbContext.Abouts.First();
+                return View(new AboutViewModel { About = ps.AboutMe, Contacts = ps.Contacts });
+            }
             return View();
         }
 

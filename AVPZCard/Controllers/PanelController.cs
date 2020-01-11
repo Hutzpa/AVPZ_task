@@ -20,7 +20,7 @@ namespace AVPZCard.Controllers
         private IRepository _repo;
         private IFileManager _fileManager;
 
-        public PanelController(IRepository repo, 
+        public PanelController(IRepository repo,
             IFileManager fileManager,
             AppDbContext dbContext)
         {
@@ -35,17 +35,26 @@ namespace AVPZCard.Controllers
             return View(posts);
         }
 
-        
-        public IActionResult Contacts()
+
+       
+
+        [HttpGet]
+        public IActionResult EditAbout()
         {
-            ViewData["Title"] = "Контакты";
             return View();
         }
-        public IActionResult AboutMe()
+
+        [HttpPost]
+        public IActionResult EditAbout(AboutViewModel vm)
         {
-            ViewData["Title"] = "Про меня";
-            return View();
+            _repo.UpdateInf(vm);
+
+
+            return RedirectToAction("Index", "Home");
+
         }
+
+
 
         [HttpGet]
         public IActionResult Edit(int? id)
@@ -54,7 +63,7 @@ namespace AVPZCard.Controllers
             ViewBag.Categories = v;
             ViewData["Title"] = "Edit";
             if (id == null)
-                return View(new PostViewModel()); 
+                return View(new PostViewModel());
             else
             {
                 var post = _repo.GetPost((int)id);
@@ -70,9 +79,9 @@ namespace AVPZCard.Controllers
                     Price = post.Price,
                     IsAble = post.IsAble,
                     Tags = post.Tags,
-                    Category = post.Category,                    
-                    
-                }) ;
+                    Category = post.Category,
+
+                });
             }
 
         }
@@ -91,7 +100,7 @@ namespace AVPZCard.Controllers
                 Price = vm.Price,
                 IsAble = vm.IsAble,
                 Tags = vm.Tags,
-                Category = _dbContext.Categories.FirstOrDefault(o=>o.Id_Category==vm.CategoryId)
+                Category = _dbContext.Categories.FirstOrDefault(o => o.Id_Category == vm.CategoryId)
             };
             if (vm.Image == null)
                 post.Image = vm.CurrentImage;

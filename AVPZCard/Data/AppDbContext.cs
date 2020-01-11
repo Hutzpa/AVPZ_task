@@ -15,10 +15,11 @@ namespace AVPZCard.Data
         public AppDbContext(DbContextOptions<AppDbContext> options)
             :base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<About> Abouts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

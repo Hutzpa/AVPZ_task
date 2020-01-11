@@ -1,0 +1,27 @@
+﻿@model AboutViewModel
+
+
+    <link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+<form asp-controller="Panel" asp-action="EditAbout" method="post" enctype="multipart/form-data">
+
+    <div>
+        <label>Новые данные в "Про нас" </label>
+        <label>Если изменять не надо, то оставьте пустым </label>
+        <textarea id="editor" asp-for="About"> </textarea>
+    </div> 
+    <div>
+        <label>Новые данные в "Оплата и доставка" </label>
+        <label>Если изменять не надо, то оставьте пустым </label>
+        <textarea id="editor1" asp-for="Contacts"> </textarea>
+    </div>
+
+     <input type="submit" value="Сохранить" />
+</form>
+
+@section Scripts{
+    <script src="~/lib/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+    <script>
+        $('#editor').trumbowyg();
+        $('#editor1').trumbowyg();
+    </script>
+}

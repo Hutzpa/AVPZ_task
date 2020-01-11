@@ -20,6 +20,8 @@ namespace AVPZCard.Data.Repository
         void AddPost(Post post);
         void UpdatePost(Post post);
 
+        void UpdateInf(AboutViewModel vm);
+
         IEnumerable<Category> DisplayCategories();
 
         Task<bool> SaveChangesAsync();

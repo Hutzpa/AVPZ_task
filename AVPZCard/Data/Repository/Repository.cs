@@ -19,7 +19,7 @@ namespace AVPZCard.Data.Repository
         }
         public List<Post> GetAllPosts()
         {
-            return _ctx.Posts.Include(o=>o.Category).ToList();
+            return _ctx.Posts.Include(o => o.Category).ToList();
         }
 
         public IndexViewModel GetAllPosts(int pageNumber,
@@ -33,7 +33,7 @@ namespace AVPZCard.Data.Repository
             //AsNoTracking не будет отслеживать изменения найденых постов (но увеличивает скорость)
             //последи за сохранением
             var query = _ctx.Posts.Include(p => p.Category).AsNoTracking();
-            
+
 
             if (category != 0)
             {
@@ -53,8 +53,8 @@ namespace AVPZCard.Data.Repository
             {
                 PageNumber = pageNumber,
                 CanNextPage = canNext,
-                PageCount = (int) Math.Ceiling((double) postCount / pageSize),
-                Category = _ctx.Categories.FirstOrDefault(o=>o.Id_Category == category),
+                PageCount = (int)Math.Ceiling((double)postCount / pageSize),
+                Category = _ctx.Categories.FirstOrDefault(o => o.Id_Category == category),
                 Search = search,
                 Posts = query
                     .Skip(skipAmount)
@@ -72,6 +72,30 @@ namespace AVPZCard.Data.Repository
         {
             _ctx.Posts.Add(post);
 
+        }
+
+
+        public async void UpdateInf(AboutViewModel vm)
+        {
+            if (_ctx.Abouts.Count() == 0)
+            {
+                _ctx.Abouts.Add(new About { AboutMe = vm.About, Contacts = vm.Contacts });
+                await _ctx.SaveChangesAsync();
+            }
+            else
+            {
+                var ab = _ctx.Abouts.First();
+                if (vm.About != null && vm.About.Length > 10)
+                {
+                    ab.AboutMe = vm.About;
+                }
+                if (vm.Contacts != null && vm.Contacts.Length > 10)
+                {
+                    ab.Contacts = vm.Contacts;
+                }
+                 _ctx.Abouts.Update(ab);
+                _ctx.SaveChanges();
+            }
         }
 
         public void RemovePost(int id)
