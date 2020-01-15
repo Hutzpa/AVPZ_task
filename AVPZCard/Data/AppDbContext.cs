@@ -15,7 +15,7 @@ namespace AVPZCard.Data
         public AppDbContext(DbContextOptions<AppDbContext> options)
             :base(options)
         {
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -23,8 +23,18 @@ namespace AVPZCard.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=SQL6007.site4now.net;Initial Catalog=DB_A50403_AvtoDatchiki;User Id=DB_A50403_AvtoDatchiki_admin;Password=1Password_;");
+            base.OnConfiguring(optionsBuilder);
+
+
+
+            optionsBuilder.UseSqlServer("Data Source=SQL6009.site4now.net;Initial Catalog=DB_A50403_AvtoDatchiki;User Id=DB_A50403_AvtoDatchiki_admin;Password=1Password_;MultipleActiveResultSets=true");
+
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=MyBlog; Trusted_Connection=true; MultipleActiveResultSets=true");
+        
+        
+        
         }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

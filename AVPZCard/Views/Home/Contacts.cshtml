@@ -6,6 +6,13 @@
 
 <h1>Оплата и доставка</h1>
 <div class="border">
+    @if (Model?.Contacts != null)
+    {
+        <p>@Html.Raw(Model?.Contacts)</p>
+    }
+    else
+    {
+        <label>Тут пока ничего, зайдите позже</label>
+    }
 
-    <p>@Html.Raw(Model.Contacts)</p>
 </div>

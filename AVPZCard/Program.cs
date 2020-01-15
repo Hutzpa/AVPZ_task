@@ -32,10 +32,10 @@ namespace AVPZCard
             {
                 var adminUser = new IdentityUser
                 {
-                    UserName = "admin",
+                    UserName = " ",
                     Email = "admin@test.com"
                 };
-                var result = userManager.CreateAsync(adminUser, "password").GetAwaiter().GetResult();
+                var result = userManager.CreateAsync(adminUser, " ").GetAwaiter().GetResult();
                 //add role to user
                 userManager.AddToRoleAsync(adminUser, adminrole.Name).GetAwaiter().GetResult();
                 //create an admin

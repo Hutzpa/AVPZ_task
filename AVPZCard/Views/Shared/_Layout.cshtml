@@ -6,14 +6,21 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <meta name="description" content="@ViewBag.Description" />
+    @if (ViewBag.Description == null)
+    {
+        <meta name="description" content="Автодатчики, Автодатчики Лямбда зонды, Датчик для авто, Датчики для авто, Автоэлектрика, Датчик кислорода, датчики кислорода" />
+    }
+    else
+    {
+        <meta name="description" content="@ViewBag.Description" />
+    }
     <meta name="keywords" content="@ViewBag.keywords" />
 </head>
 <body>
     <div>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow ">
             <div class="container">
-                <a class="navbar-brand"  asp-controller="Home" asp-action="Index">Главная</a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Главная</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -85,8 +92,8 @@
 
 
     <div class="d-flex bd-highlight" style="background-color:transparent;">
-         
-        <div class="p-0 w-75 bd-highlight ml-5"><a asp-controller="Home" asp-action="Index"><img src="~/content/static/Logo.png"  height="70" width="400" class="mt-1 mb-1"></a></div>
+
+        <div class="p-0 w-75 bd-highlight ml-5"><a asp-controller="Home" asp-action="Index"><img src="~/content/static/Logo.png" height="70" width="400" class="mt-1 mb-1"></a></div>
         <div class="p-0 flex-shrink-1 bd-highlight col-md-offset-4">
             <div class=" col-md-offset-4"><b>Телефоны: (066)-966-80-46</b></div>
             <div class=" col-md-offset-4"><b>(096)-105-19-96</b></div>

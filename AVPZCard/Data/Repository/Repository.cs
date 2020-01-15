@@ -80,7 +80,7 @@ namespace AVPZCard.Data.Repository
             if (_ctx.Abouts.Count() == 0)
             {
                 _ctx.Abouts.Add(new About { AboutMe = vm.About, Contacts = vm.Contacts });
-                await _ctx.SaveChangesAsync();
+                _ctx.SaveChanges();
             }
             else
             {

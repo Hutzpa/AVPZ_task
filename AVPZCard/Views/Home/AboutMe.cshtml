@@ -7,6 +7,12 @@
 <h1>О нас</h1>
 
 <div class="border">
-
-    <p>@Html.Raw(Model.About)</p>
+    @if(Model?.About != null)
+    {
+    <p>@Html.Raw(Model?.About)</p>
+    }
+    else
+    {
+        <label>Тут пока ничего, зайдите позже</label>
+    }
 </div>

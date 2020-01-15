@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /AVPZCard/wwwroot/content/blog
+/AVPZCard/Migrations
